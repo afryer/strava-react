@@ -16,14 +16,14 @@ class Strava extends Component {
         "https://www.strava.com/api/v3/athletes/663067/activities?access_token=76b4ec0f6143822d5f5d33a42fc554daa5f9f82d"
       )
       .then(response => {
-        console.log(response);
+        console.log(response.data);
         const activities = response.data;
         this.setState({ activities });
       });
   }
 
   render() {
-    return <div>console.log(this.state.activities)</div>;
+    return <div></div>;
   }
 }
 
