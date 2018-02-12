@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Strava from './Strava';
+import Activities from './activities';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
-ReactDOM.render(<Strava />, document.getElementById("strava"));
+ReactDOM.render(<Activities />, document.getElementById("strava"));
 registerServiceWorker();
