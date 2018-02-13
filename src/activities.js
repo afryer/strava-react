@@ -4,35 +4,56 @@ import axios from 'axios';
 class Activities extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      activities: []
-    } 
+    this.state = { 
+      activities: [], 
+      toggleDetails: true 
+    };
+    this.toggleDetails = this.toggleDetails.bind(this);
   }
 
   componentDidMount() {
     axios
-      .get(
-        'https://www.strava.com/api/v3/athletes/663067/activities',
-        {
-          params: {
-          access_token: '76b4ec0f6143822d5f5d33a42fc554daa5f9f82d'
+      .get("https://www.strava.com/api/v3/athletes/663067/activities", {
+        params: {
+          access_token: "76b4ec0f6143822d5f5d33a42fc554daa5f9f82d"
         }
-      }
-      )
+      })
       .then(response => {
         const activities = response.data;
         this.setState({ activities });
       });
   }
 
+  toggleDetails() {
+    var byDistance = this.state.activities;  
+    byDistance.sort( (a, b) => {
+      if (this.state.toggleDetails){
+        return b.distance - a.distance;
+      }
+      else {
+        return a.distance - b.distance;
+      }
+      
+    });
+     
+    this.setState({ activities: byDistance });
+    this.setState({ toggleDetails: !this.state.toggleDetails })
+  }
+
   render() {
     return <div>
         <h2>Recent Activities</h2>
+        <button onClick={this.toggleDetails}>
+          {this.state.toggleDetails ? "Short" : "Long"}
+        </button>
+    
         <ul>
           {this.state.activities.map(activity => (
-            <Activity 
-              id={activity.id} 
-              kudos_count= {activity.kudos_count }
+            <Activity
+              key={activity.id}
+              id={activity.id}
+              name={activity.name}
+              kudos_count={activity.kudos_count}
               distance={activity.distance}
               suffer_score={activity.suffer_score}
             />
@@ -44,7 +65,7 @@ class Activities extends Component {
 
 class Activity extends Component {
   render(props) {
-    return <li>
+    return <li key={this.props.id}>
         <a href={"https://www.strava.com/activities/" + this.props.id}>
           {this.props.name} -
           {this.props.kudos_count} -
