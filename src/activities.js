@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import Activity from './Activity';
+
 
 class Activities extends Component {
   constructor(props) {
@@ -63,17 +65,5 @@ class Activities extends Component {
   }
 }
 
-class Activity extends Component {
-  render(props) {
-    return <li key={this.props.id}>
-        <a href={"https://www.strava.com/activities/" + this.props.id}>
-          {this.props.name} -
-          {this.props.kudos_count} -
-          {this.props.distance / 1000}km -
-          {this.props.suffer_score}
-        </a>
-      </li>;
-  }
-}
 
 export default Activities
