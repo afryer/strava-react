@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import Details from "./Details";
 
 class Athlete extends Component {
   constructor(props){
@@ -23,7 +24,13 @@ class Athlete extends Component {
   }
   
   render() {
-    return <p>{ this.state.athlete.firstname } {this.state.athlete.lastname}</p>
+    return <div>
+        <Details firstname={this.state.athlete.firstname} lastname={this.state.athlete.lastname} city={this.state.athlete.city} weight={this.state.athlete.weight} state={this.state.athlete.state} sex={this.state.athlete.sex} created_at={this.state.athlete.created_at} />
+
+        <p>
+          {this.state.athlete.firstname} {this.state.athlete.lastname}
+        </p>
+      </div>;
   }
 
 }
