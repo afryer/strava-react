@@ -25,11 +25,8 @@ class Athlete extends Component {
   
   render() {
     return <div>
-        <Details firstname={this.state.athlete.firstname} lastname={this.state.athlete.lastname} city={this.state.athlete.city} weight={this.state.athlete.weight} state={this.state.athlete.state} sex={this.state.athlete.sex} created_at={this.state.athlete.created_at} />
+        <Details athlete={this.state.athlete} firstname={this.state.athlete.firstname} lastname={this.state.athlete.lastname} city={this.state.athlete.city} weight={this.state.athlete.weight} state={this.state.athlete.state} sex={this.state.athlete.sex} created_at={this.state.athlete.created_at} clubs={this.state.athlete.clubs} />
 
-        <p>
-          {this.state.athlete.firstname} {this.state.athlete.lastname}
-        </p>
       </div>;
   }
 

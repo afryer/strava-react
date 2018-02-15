@@ -35,7 +35,6 @@ class Activities extends Component {
       else {
         return a.distance - b.distance;
       }
-      
     });
      
     this.setState({ activities: byDistance });

@@ -7,19 +7,35 @@ class Details extends Component {
 
   constructor(props){
     super(props);
-    this.state = {}
+    this.state = {
+      clubs: null
+    }
   }
 
-  componentDidMount() {
+  componentDidUpdate() {
     console.log(this.props);
-    let info = this.props;
-    this.setState({info})
+    // let info = this.props;
+    // this.setState({info})
+    // console.log(this.state)
+    this.retrieveClubs();
+
+  }
+
+  retrieveClubs(props) {
+    var clubArray = this.state.clubs;
+    this.props.clubs.map(element => {
+      console.log(element);
+      <li>{element.id}</li>
+    })
+
   }
 
 
   render() {
-    return <div>
+    return (
+    <div>
         <h2>
+          
           {this.props.firstname} {this.props.lastname}
         </h2>
         <p>Sex: {this.props.sex === "M" ? "Male" : "Female"}</p>
@@ -27,8 +43,10 @@ class Details extends Component {
         <p>
           From: {this.props.city}, {this.props.state}
         </p>
-        <p>Member since: {this.props.created_at}</p>
-      </div>;
+        <p>Member since: {moment( this.props.created_at ).format('MMMM YYYY')}</p>
+      
+      </div>
+      )
   }
 }
 
