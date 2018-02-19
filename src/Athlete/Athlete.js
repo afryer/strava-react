@@ -10,7 +10,6 @@ class Athlete extends Component {
       athlete: [],
       clubs: []
     }
-    console.log(this.state.athlete.clubs)
   }
 
   componentDidMount() {

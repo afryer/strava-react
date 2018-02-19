@@ -6,11 +6,12 @@ class Clubs extends Component {
     super(props);
     this.state = {
     }
+    console.log(this.props)
   }
 
   render() {
     return (
-      <li key={this.props.id}><img src={this.props.profile} /> {this.props.name}</li>
+      <li key={this.props.id}><img src={this.props.profile} alt={this.props.name} /> {this.props.name}</li>
     )
   }
 }

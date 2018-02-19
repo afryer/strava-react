@@ -14,7 +14,6 @@ class Details extends Component {
 
   render() {
     return (
-    
       <div>
         <h2>{this.props.firstname} {this.props.lastname}</h2>
         <p>Sex: {this.props.sex === "M" ? "Male" : "Female"}</p>

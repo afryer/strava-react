@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 
 class Activity extends Component {
-  render(props) {
-    return (
-    
-    <li className="activity__item" key={this.props.id}>
-      <a href={"https://www.strava.com/activities/" + this.props.id}>
-        {this.props.name} -
-          {this.props.kudos_count} -
-          {this.props.distance / 1000}km -
-          {this.props.suffer_score}
-      </a>
-    </li>
-
-    );
+  render() {
+    return <tr key={this.props.id}>
+        <td>
+          <a href={"https://www.strava.com/activities/" + this.props.id}>
+            {this.props.name}
+          </a>
+        </td>
+        <td>{this.props.kudos_count}</td>
+        <td>{this.props.distance / 1000}km</td>
+        <td>{this.props.suffer_score}</td>
+        <td>{this.props.max_heartrate}</td>
+      </tr>;
   }
 }
 
