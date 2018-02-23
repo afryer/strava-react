@@ -8,8 +8,9 @@ import Athlete from './Athlete/Athlete';
 
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Athlete />, document.getElementById("athlete"));
 ReactDOM.render(<Activities />, document.getElementById("strava"));
+ReactDOM.render(<Athlete />, document.getElementById("athlete"));
+
 ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<FilterableProductTable />, document.getElementById("container"));
 

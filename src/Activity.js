@@ -1,19 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Activity extends Component {
-  render() {
-    return <tr key={this.props.id}>
-        <td>
-          <a href={"https://www.strava.com/activities/" + this.props.id}>
-            {this.props.name}
-          </a>
-        </td>
-        <td>{this.props.kudos_count}</td>
-        <td>{this.props.distance / 1000}km</td>
-        <td>{this.props.suffer_score}</td>
-        <td>{this.props.max_heartrate}</td>
-      </tr>;
-  }
+const Activity = ( props ) => {
+  return (
+    <tr key={props.id}>
+      <td>
+        <a href={"https://www.strava.com/activities/" + props.id}>
+          {props.name}
+        </a>
+      </td>
+      <td>{props.kudos_count}</td>
+      <td>{props.distance / 1000}km</td>
+      <td>{props.suffer_score}</td>
+      <td>{props.max_heartrate}</td>
+      <td>{props.type}</td>
+      <td>{props.total_elevation_gain}</td>
+    </tr>
+  )
 }
+
 
 export default Activity

@@ -8,16 +8,16 @@ class Activities extends Component {
     super(props);
     this.state = {
       activities: [],
-      toggleDetails: true,
-      toggleSuffering: true,
-      toggleKudos: true,
-      toggleHeartRate: true
+      toggleDistance: false,
+      toggleSuffering: false,
+      toggleKudos: false,
+      toggleHeartRate: false
     };
 
     this.toggleHeartRate = this.toggleHeartRate.bind(this);
     this.toggleKudos = this.toggleKudos.bind(this);
     this.toggleSuffering = this.toggleSuffering.bind(this);
-    this.toggleDetails = this.toggleDetails.bind(this);
+    this.toggleDistance = this.toggleDistance.bind(this);
   }
 
   componentDidMount() {
@@ -34,10 +34,10 @@ class Activities extends Component {
       });
   }
 
-  toggleDetails() {
-    var byDistance = this.state.activities;
+  toggleDistance() {
+    let byDistance = this.state.activities;
     byDistance.sort((a, b) => {
-      if (this.state.toggleDetails) {
+      if (this.state.toggleDistance) {
         return b.distance - a.distance;
       } else {
         return a.distance - b.distance;
@@ -45,13 +45,13 @@ class Activities extends Component {
     });
 
     this.setState({ activities: byDistance });
-    this.setState({ toggleDetails: !this.state.toggleDetails });
+    this.setState({ toggleDistance: !this.state.toggleDistance });
   }
 
   toggleHeartRate() {
-    var byHR = this.state.activities;
+    let byHR = this.state.activities;
     byHR.sort((a, b) => {
-      if (this.state.toggleDetails) {
+      if (this.state.toggleHeartRate) {
         return b.max_heartrate - a.max_heartrate;
       } else {
         return a.max_heartrate - b.max_heartrate;
@@ -62,8 +62,9 @@ class Activities extends Component {
     this.setState({ toggleHeartRate: !this.state.toggleHeartRate });
   }
 
+
   toggleSuffering() {
-    var bySuffering = this.state.activities;
+    let bySuffering = this.state.activities;
     bySuffering.sort((a, b) => {
       if (this.state.toggleSuffering) {
         return b.suffer_score - a.suffer_score;
@@ -77,7 +78,7 @@ class Activities extends Component {
   }
 
   toggleKudos() {
-    var byKudos = this.state.activities;
+    let byKudos = this.state.activities;
     byKudos.sort((a, b) => {
       if (this.state.toggleKudos) {
         return b.kudos_count - a.kudos_count;
@@ -103,8 +104,8 @@ class Activities extends Component {
                 </button>
               </td>
               <td>
-                Distance <button onClick={this.toggleDetails}>
-                  {this.state.toggleDetails ? "Short" : "Long"}
+                Distance <button onClick={this.toggleDistance}>
+                  {this.state.toggleDistance ? "Short" : "Long"}
                 </button>
               </td>
               <td>
@@ -119,6 +120,8 @@ class Activities extends Component {
                   {this.state.toggleHeartRate ? "Easy Life" : "Suffering"}
                 </button>
               </td>
+              <td>Type</td>
+              <td>total_elevation_gain</td>
             </tr>
             {this.state.activities.map(activity => (
               <Activity
@@ -129,6 +132,8 @@ class Activities extends Component {
                 distance={activity.distance}
                 suffer_score={activity.suffer_score}
                 max_heartrate={activity.max_heartrate}
+                type={activity.type}
+                total_elevation_gain={activity.total_elevation_gain}
               />
             ))}
           </tbody>
