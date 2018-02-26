@@ -8,16 +8,20 @@ class Activities extends Component {
     super(props);
     this.state = {
       activities: [],
+      baseActivities: [],
       toggleDistance: false,
       toggleSuffering: false,
       toggleKudos: false,
-      toggleHeartRate: false
+      toggleHeartRate: false,
+      value: 'null'
     };
 
     this.toggleHeartRate = this.toggleHeartRate.bind(this);
     this.toggleKudos = this.toggleKudos.bind(this);
     this.toggleSuffering = this.toggleSuffering.bind(this);
     this.toggleDistance = this.toggleDistance.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
   }
 
   componentDidMount() {
@@ -31,6 +35,7 @@ class Activities extends Component {
       .then(response => {
         const activities = response.data;
         this.setState({ activities });
+        this.setState({ baseActivities: activities })
       });
   }
 
@@ -62,7 +67,6 @@ class Activities extends Component {
     this.setState({ toggleHeartRate: !this.state.toggleHeartRate });
   }
 
-
   toggleSuffering() {
     let bySuffering = this.state.activities;
     bySuffering.sort((a, b) => {
@@ -91,20 +95,47 @@ class Activities extends Component {
     this.setState({ toggleKudos: !this.state.toggleKudos });
   }
 
+  handleChange(event) {
+    
+    const filteredActivities = this.state.baseActivities
+    const filteredByActivities = filteredActivities.filter(activity => activity.type === event.target.value)
+  
+    this.setState({ value: event.target.value });
+    this.setState({ activities: filteredByActivities });
+
+  }
+
   render() {
-    return <div>
-        <h2>Recent Activities</h2>
+    return (
+      <div>
+        <h2> Filter by Activity</h2>
+        <form action="post" className="form">
+          <fieldset>
+            <legend className="visually-hidden">Filter by Activity</legend>
+            <div className="form__group">
+              <label htmlFor="ddlTitle">Activity:</label>
+              <div className="form__item">
+                <select id="ddlTitle" value={this.state.value} onChange={this.handleChange}>
+                  <option value="Run">Running</option>
+                  <option value="Ride">Riding</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </form>
         <table>
           <tbody>
             <tr>
               <td>Name</td>
               <td>
-                Kudos <button onClick={this.toggleKudos}>
+                Kudos{" "}
+                <button onClick={this.toggleKudos}>
                   {this.state.toggleKudos ? "Hate me" : "Love me"}
                 </button>
               </td>
               <td>
-                Distance <button onClick={this.toggleDistance}>
+                Distance{" "}
+                <button onClick={this.toggleDistance}>
                   {this.state.toggleDistance ? "Short" : "Long"}
                 </button>
               </td>
@@ -138,7 +169,8 @@ class Activities extends Component {
             ))}
           </tbody>
         </table>
-      </div>;
+      </div>
+    );
   }
 }
 
