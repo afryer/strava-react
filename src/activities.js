@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Activity from './Activity';
+import ActivityFilter from './components/ActivityFilter';
 
 
 class Activities extends Component {
@@ -13,15 +14,16 @@ class Activities extends Component {
       toggleSuffering: false,
       toggleKudos: false,
       toggleHeartRate: false,
-      value: 'null'
+      toggleAscent: false,
+      value: "null"
     };
 
     this.toggleHeartRate = this.toggleHeartRate.bind(this);
+    this.toggleAscent = this.toggleAscent.bind(this);
     this.toggleKudos = this.toggleKudos.bind(this);
     this.toggleSuffering = this.toggleSuffering.bind(this);
     this.toggleDistance = this.toggleDistance.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
   }
 
   componentDidMount() {
@@ -35,7 +37,7 @@ class Activities extends Component {
       .then(response => {
         const activities = response.data;
         this.setState({ activities });
-        this.setState({ baseActivities: activities })
+        this.setState({ baseActivities: activities });
       });
   }
 
@@ -51,6 +53,20 @@ class Activities extends Component {
 
     this.setState({ activities: byDistance });
     this.setState({ toggleDistance: !this.state.toggleDistance });
+  }
+
+  toggleAscent() {
+    let byAscent = this.state.activities;
+    byAscent.sort((a, b) => {
+      if (this.state.toggleAscent) {
+        return b.total_elevation_gain - a.total_elevation_gain;
+      } else {
+        return a.total_elevation_gain - b.total_elevation_gain;
+      }
+    });
+
+    this.setState({ activities: byAscent });
+    this.setState({ toggleAscent: !this.state.toggleAscent });
   }
 
   toggleHeartRate() {
@@ -96,46 +112,29 @@ class Activities extends Component {
   }
 
   handleChange(event) {
-    
-    const filteredActivities = this.state.baseActivities
-    const filteredByActivities = filteredActivities.filter(activity => activity.type === event.target.value)
-  
+    const filteredActivities = this.state.baseActivities;
+    const filteredByActivities = filteredActivities.filter(
+      activity => activity.type === event.target.value
+    );
+
     this.setState({ value: event.target.value });
     this.setState({ activities: filteredByActivities });
-
   }
 
   render() {
-    return (
-      <div>
-        <h2> Filter by Activity</h2>
-        <form action="post" className="form">
-          <fieldset>
-            <legend className="visually-hidden">Filter by Activity</legend>
-            <div className="form__group">
-              <label htmlFor="ddlTitle">Activity:</label>
-              <div className="form__item">
-                <select id="ddlTitle" value={this.state.value} onChange={this.handleChange}>
-                  <option value="Run">Running</option>
-                  <option value="Ride">Riding</option>
-                </select>
-              </div>
-            </div>
-          </fieldset>
-        </form>
+    return <div>
+        <ActivityFilter change={this.handleChange} />
         <table>
           <tbody>
             <tr>
               <td>Name</td>
               <td>
-                Kudos{" "}
-                <button onClick={this.toggleKudos}>
+                Kudos <button onClick={this.toggleKudos}>
                   {this.state.toggleKudos ? "Hate me" : "Love me"}
                 </button>
               </td>
               <td>
-                Distance{" "}
-                <button onClick={this.toggleDistance}>
+                Distance <button onClick={this.toggleDistance}>
                   {this.state.toggleDistance ? "Short" : "Long"}
                 </button>
               </td>
@@ -152,7 +151,12 @@ class Activities extends Component {
                 </button>
               </td>
               <td>Type</td>
-              <td>total_elevation_gain</td>
+              <td>
+                total_elevation_gain
+                <button onClick={this.toggleAscent}>
+                  {this.state.toggleAscent ? "Easy Life" : "Suffering"}
+                </button>
+              </td>
             </tr>
             {this.state.activities.map(activity => (
               <Activity
@@ -169,8 +173,7 @@ class Activities extends Component {
             ))}
           </tbody>
         </table>
-      </div>
-    );
+      </div>;
   }
 }
 
