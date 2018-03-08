@@ -1,0 +1,11 @@
+import React from "react";
+
+const Clubs = ( props ) => {
+  return <li key={props.id}>
+      <a href={"https://www.strava.com/clubs/" + props.url} target="_blank">
+        <img src={props.profile_medium} alt={props.name} /> {props.name}
+      </a>
+    </li>;
+}
+
+export default Clubs

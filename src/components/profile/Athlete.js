@@ -28,24 +28,21 @@ class Athlete extends Component {
   }
   
   render() {
-    return (
-      <div>
-
-        <Details firstname={this.state.athlete.firstname} lastname={this.state.athlete.lastname} city={this.state.athlete.city} weight={this.state.athlete.weight} state={this.state.athlete.state} sex={this.state.athlete.sex} created_at={this.state.athlete.created_at} clubs={this.state.athlete.clubs} />
-        <ul>
+    return <div className="profile">
+        <Details profile={this.state.athlete.profile} firstname={this.state.athlete.firstname} lastname={this.state.athlete.lastname} city={this.state.athlete.city} weight={this.state.athlete.weight} state={this.state.athlete.state} sex={this.state.athlete.sex} created_at={this.state.athlete.created_at} clubs={this.state.athlete.clubs} />
+        <ul className="club-list">
           {this.state.clubs.map(club => (
             <Clubs
               key={club.id}
+              url={club.url}
               id={club.id}
               name={club.name}
               member_count={club.member_count}
-              profile={club.profile}
+              profile_medium={club.profile_medium}
             />
           ))}
         </ul>
-
-      </div>
-    )
+      </div>;
   }
 
 }

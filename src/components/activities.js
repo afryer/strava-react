@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Activity from './Activity';
-import ActivityFilter from './components/ActivityFilter';
+import ActivityFilter from './ActivityFilter';
 
 
 class Activities extends Component {

@@ -1,11 +1,14 @@
 import React from "react";
+import "./athlete.css";
+
 //TODO use moment corretly to format dates 
 var moment = require("moment");
 moment().format();
 
 const Details = ( props ) => {
   return (
-    <div>
+    <div className="details">
+      <img src={props.profile} alt={props.lastname} />
       <h2>{props.firstname} {props.lastname}</h2>
       <p>Sex: {props.sex === "M" ? "Male" : "Female"}</p>
       <p>Weight: {props.weight + "kg"}</p>
