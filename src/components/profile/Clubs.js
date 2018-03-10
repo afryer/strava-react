@@ -1,4 +1,5 @@
 import React from "react";
+import "./clubs.css";
 
 const Clubs = ( props ) => {
   return <li key={props.id}>

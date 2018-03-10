@@ -16,6 +16,9 @@
 .env.test.local
 .env.production.local
 
+# build files
+src/**/*.css
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
