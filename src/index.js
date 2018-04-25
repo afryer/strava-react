@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Header from './components/global/Header';
-import Footer from './components/global/Footer';
+import Header from './components/Global/Header/Header';
+import Footer from './components/Global/Footer/Footer';
 
-import Activities from './components/activities/activities';
-import Athlete from './components/profile/Athlete';
+import Activities from './components/Activities/Activities';
+import Athlete from './components/Athlete/Athlete';
 import registerServiceWorker from './registerServiceWorker';
 
 

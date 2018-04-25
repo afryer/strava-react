@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Activity from './Activity';
-import ActivityFilter from './ActivityFilter';
-
+import Activity from './Activity/Activity';
+import ActivityFilter from './Filter/ActivityFilter';
+import './Activities.css'
 
 class Activities extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Details from "./Details";
-import Clubs from "./Clubs";
+import Details from "./Details/Details";
+import Clubs from "./Clubs/Clubs";
 
 class Athlete extends Component {
   constructor(props){
@@ -23,13 +23,26 @@ class Athlete extends Component {
         const athlete = response.data;
         const clubs = response.data.clubs
         this.setState({ athlete:athlete, clubs:clubs });
-
       });
   }
   
   render() {
     return <div className="profile">
-        <Details profile={this.state.athlete.profile} firstname={this.state.athlete.firstname} lastname={this.state.athlete.lastname} city={this.state.athlete.city} weight={this.state.athlete.weight} state={this.state.athlete.state} sex={this.state.athlete.sex} created_at={this.state.athlete.created_at} clubs={this.state.athlete.clubs} />
+      <div className="details">
+        <Details 
+          profile={this.state.athlete.profile} 
+          firstname={this.state.athlete.firstname} 
+          lastname={this.state.athlete.lastname} 
+          city={this.state.athlete.city} 
+          weight={this.state.athlete.weight} 
+          state={this.state.athlete.state} 
+          sex={this.state.athlete.sex} 
+          created_at={this.state.athlete.created_at} 
+          clubs={this.state.athlete.clubs} 
+        />
+      </div>  
+      <div className="clubs">
+        <h2 className="clubs__title">Clubs</h2>
         <ul className="club-list">
           {this.state.clubs.map(club => (
             <Clubs
@@ -42,7 +55,8 @@ class Athlete extends Component {
             />
           ))}
         </ul>
-      </div>;
+      </div>
+    </div>;
   }
 
 }
