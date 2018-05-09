@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./clubs.css";
 
 const Clubs = ( props ) => {
@@ -8,5 +9,11 @@ const Clubs = ( props ) => {
       </a>
     </li>;
 }
+
+Clubs.propTypes = {
+  url: PropTypes.string,
+  profile_medium : PropTypes.string,
+  name : PropTypes.string
+};
 
 export default Clubs

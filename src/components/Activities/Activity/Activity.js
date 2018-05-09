@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from 'prop-types';
+
 
 const Activity = ( props ) => {
   return (
@@ -18,5 +20,13 @@ const Activity = ( props ) => {
   )
 }
 
+Activity.propTypes = {
+  kudos_count : PropTypes.number,
+  distance: PropTypes.number,
+  suffer_score : PropTypes.number,
+  max_heartrate : PropTypes.number,
+  total_elevation_gain : PropTypes.number,
+  type : PropTypes.string,
+};
 
 export default Activity

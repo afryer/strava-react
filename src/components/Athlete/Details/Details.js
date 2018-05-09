@@ -1,7 +1,7 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./Details.css";
 
-//TODO use moment corretly to format dates 
 var moment = require("moment");
 moment().format();
 
@@ -18,6 +18,15 @@ const Details = ( props ) => {
   )
 }
 
-
+Details.Details = {
+  profile : PropTypes.string,
+  firstname : PropTypes.string,
+  lastname : PropTypes.string,
+  sex : PropTypes.string,
+  weight : PropTypes.number,
+  city : PropTypes.string,
+  state: PropTypes.string,
+  created_at : PropTypes.string
+};
 
 export default Details
