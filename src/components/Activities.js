@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Activity from './ActivityRow/ActivityRow';
+import ActivityRow from './ActivityRow/ActivityRow';
 import ActivityFilter from './Filter/ActivityFilter';
 import './Activities.css'
 

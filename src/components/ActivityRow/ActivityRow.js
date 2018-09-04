@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 
-const Activity = ( props ) => {
+const ActivityRow = ( props ) => {
   return (
     <tr key={props.id}>
       <td>
@@ -20,7 +20,7 @@ const Activity = ( props ) => {
   )
 }
 
-Activity.propTypes = {
+ActivityRow.propTypes = {
   kudos_count : PropTypes.number,
   distance: PropTypes.number,
   suffer_score : PropTypes.number,
@@ -29,4 +29,4 @@ Activity.propTypes = {
   type : PropTypes.string,
 };
 
-export default Activity
+export default ActivityRow

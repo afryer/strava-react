@@ -9,7 +9,7 @@ import './index.css';
 import Header from './components/Global/Header/Header';
 import Footer from './components/Global/Footer/Footer';
 
-import Activities from './components/Activities/Activities';
+import Activities from './components/Activities';
 import Athlete from './components/Athlete/Athlete';
 
 
@@ -29,7 +29,7 @@ class App extends Component {
                 </ul>
                 <Route exact path="/" component={Athlete} />
                 <Route path="/activities" component={Activities} />
- 
+                
                 <Footer />
                 </div>
             </Router>
