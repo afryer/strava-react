@@ -17,6 +17,8 @@ class ActivityFilter extends Component {
               <select id="ddlTitle" value={this.props.value} onChange={this.props.change}>
                 <option value="Run">Running</option>
                 <option value="Ride">Riding</option>
+                <option value="All">All</option>
+
               </select>
             </div>
           </div>

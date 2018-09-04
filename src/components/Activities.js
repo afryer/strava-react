@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
-import Activity from './Activity/Activity';
+import Activity from './ActivityRow/ActivityRow';
 import ActivityFilter from './Filter/ActivityFilter';
 import './Activities.css'
 
@@ -42,7 +42,7 @@ class Activities extends Component {
   }
 
   toggleDistance() {
-    let byDistance = this.state.activities;
+    let byDistance = [...this.state.activities];
     byDistance.sort((a, b) => {
       if (this.state.toggleDistance) {
         return b.distance - a.distance;
@@ -56,7 +56,7 @@ class Activities extends Component {
   }
 
   toggleAscent() {
-    let byAscent = this.state.activities;
+    let byAscent = [...this.state.activities];
     byAscent.sort((a, b) => {
       if (this.state.toggleAscent) {
         return b.total_elevation_gain - a.total_elevation_gain;
@@ -70,7 +70,7 @@ class Activities extends Component {
   }
 
   toggleHeartRate() {
-    let byHR = this.state.activities;
+    let byHR = [...this.state.activities];
     byHR.sort((a, b) => {
       if (this.state.toggleHeartRate) {
         return b.max_heartrate - a.max_heartrate;
@@ -84,7 +84,7 @@ class Activities extends Component {
   }
 
   toggleSuffering() {
-    let bySuffering = this.state.activities;
+    let bySuffering = [...this.state.activities];
     bySuffering.sort((a, b) => {
       if (this.state.toggleSuffering) {
         return b.suffer_score - a.suffer_score;
@@ -98,7 +98,7 @@ class Activities extends Component {
   }
 
   toggleKudos() {
-    let byKudos = this.state.activities;
+    let byKudos = [...this.state.activities];
     byKudos.sort((a, b) => {
       if (this.state.toggleKudos) {
         return b.kudos_count - a.kudos_count;
@@ -116,7 +116,7 @@ class Activities extends Component {
     const filteredByActivities = filteredActivities.filter(
       activity => activity.type === event.target.value
     );
-
+    
     this.setState({ value: event.target.value });
     this.setState({ activities: filteredByActivities });
   }
@@ -158,8 +158,9 @@ class Activities extends Component {
                 </button>
               </td>
             </tr>
+
             {this.state.activities.map(activity => (
-              <Activity
+              <ActivityRow
                 key={activity.id}
                 id={activity.id}
                 name={activity.name}
