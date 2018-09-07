@@ -1,0 +1,45 @@
+/*------------------------------------*\
+    $RESET
+\*------------------------------------*/
+
+// this is the base SASS reset partial which compiles into master.css
+
+html {
+  font-size: $base-font-size;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  //Prevent iOS input highlighting
+  box-sizing: border-box;
+}
+
+// https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: $body-font-desktop;
+  background-color: $white;
+  color: $color-text;
+  font-family: $font-family-base;
+  line-height: $base-line-height;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-moz-selection,
+::selection {
+  color: #fff;
+  background: $brand-colour-1;
+  text-shadow: none;
+}
+
+img {
+  // option to make images responsive by default
+  // max-width: 100%;
+  // height: auto;
+  display: block;
+  -ms-interpolation-mode: bicubic;
+}

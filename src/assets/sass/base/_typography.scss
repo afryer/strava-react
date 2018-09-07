@@ -1,0 +1,155 @@
+/*------------------------------------*\
+    $TYPOGRAPHY
+\*------------------------------------*/
+
+// Generic heading styling
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5 {
+  margin: 0;
+  padding: 0;
+  color: $color-headings;
+  font-family: $font-family-title;
+  font-weight: bold;
+}
+
+// Custom heading styling
+// Markup should be semantically correct
+// Use an appropriate class to visually style an h3 as an h2 - eg <h3 class="h2">
+
+h1,
+.h1 {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+h2,
+.h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+
+h3,
+.h3 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+h4,
+.h4 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h5,
+.h5 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+// Link styles
+
+a {
+  color: $color-link-active;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: $color-link-visited;
+}
+
+a:hover {
+  color: $color-link-hover;
+}
+
+a:focus {
+  color: $color-link-hover;
+  outline: 2px solid $red;
+}
+
+// Standard text paragraphs
+
+p {
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+// List styles
+
+ol {
+  margin: 0 13px 8px 15px;
+  padding: 0;
+  list-style-position: inside;
+}
+
+ul {
+  margin: 0 12px 8px 15px;
+  padding: 0;
+  list-style-position: inside;
+}
+
+ol ol,
+ol ul,
+ul ul,
+ul ol {
+  margin-bottom: 2px;
+}
+
+li {
+  margin-bottom: 2px;
+}
+
+
+// Definition list styles
+
+dl {
+  margin-left: 0;
+}
+
+dt {
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+
+// Opinionated styling of typographic elements
+
+hr {
+  height: 1px;
+  margin: 1em 0;
+  padding: 0;
+  display: block;
+  border: 0;
+  border-top: 1px solid $grey-light;
+}
+
+blockquote {
+  margin: 0;
+  padding: 0 10px;
+  border-left: 5px solid $grey-light;
+}
+
+ins {
+  background: $yellow;
+  color: $black;
+  text-decoration: none;
+}
+
+mark {
+  font-style: italic;
+  font-weight: bold;
+}
+
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

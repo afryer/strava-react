@@ -1,0 +1,90 @@
+// Clearfix
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+//
+// For modern browsers
+// 1. The space content is one way to avoid an Opera bug when the
+//    contenteditable attribute is included anywhere else in the document.
+//    Otherwise it causes space to appear at the top and bottom of elements
+//    that are clearfixed.
+// 2. The use of `table` rather than `block` is only necessary if using
+//    `:before` to contain the top-margins of child elements.
+@mixin clearfix {
+  &:before,
+  &:after {
+    content: ' '; // 1
+    display: table; // 2
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin visually-hidden {
+  border: 0 !important;
+  clip: rect(0 0 0 0) !important;
+  height: 1px !important;
+  margin: (-1px) !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+}
+
+@mixin hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+@mixin display-block {
+  display: block !important;
+  width: 100% !important;
+}
+
+@mixin display-inline {
+  display: inline-block !important;
+}
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// uses breakpoints defined in variables.scss
+@mixin breakpoint($point, $value: 0) {
+  @if $point == xs {
+    @media screen and (max-width: $xs-max) {
+      @content;
+    }
+  }
+  @else if $point == sm {
+    @media screen and (min-width: $sm-min) {
+      @content;
+    }
+  }
+  @else if $point == md {
+    @media screen and (min-width: $md-min) {
+      @content;
+    }
+  }
+  @else if $point == lg {
+    @media screen and (min-width: $lg-min) {
+      @content;
+    }
+  }
+  @else if $point == xl {
+    @media screen and (min-width: $xl-min) {
+      @content;
+    }
+  }
+  @else {
+    @media screen and ($point: $value) {
+      @content;
+    }
+  }
+}
+
+@mixin between-breakpoints($min, $max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}

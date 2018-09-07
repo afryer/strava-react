@@ -2,28 +2,37 @@ import React, { Component } from "react";
 import axios from 'axios';
 import Details from "./Details/Details";
 import Clubs from "./Clubs/Clubs";
+import {createStore} from 'redux';
+
 
 class Athlete extends Component {
   constructor(props){
     super(props);
     this.state = {
       athlete: [],
-      clubs: []
+      clubs: [],
+      stats: []
     }
   }
 
   componentDidMount() {
-    axios
-      .get("https://www.strava.com/api/v3/athletes/663067", {
+    axios.all ([
+      axios.request("https://www.strava.com/api/v3/athletes/663067", {
         params: {
           access_token: "76b4ec0f6143822d5f5d33a42fc554daa5f9f82d"
         }
-      })
-      .then(response => {
-        const athlete = response.data;
-        const clubs = response.data.clubs
-        this.setState({ athlete:athlete, clubs:clubs });
-      });
+      }),
+      axios.request("https://www.strava.com/api/v3/athletes/663067/stats", {
+        params: {
+          access_token: "76b4ec0f6143822d5f5d33a42fc554daa5f9f82d"
+        }
+})])
+      .then(axios.spread((athleteData, statsData) => {
+        const athlete = athleteData.data;
+        const clubs = athleteData.data.clubs;
+        const stats = statsData.data;
+        this.setState({ athlete:athlete, clubs:clubs, stats:stats  });
+      }));
   }
   
   render() {

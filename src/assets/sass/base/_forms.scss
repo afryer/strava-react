@@ -1,0 +1,495 @@
+/*------------------------------------*\
+    $FORMS
+\*------------------------------------*/
+
+form {
+  margin: 0;
+}
+
+// overrides fieldset styling in  _normalize.scss
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+label,
+.form__label {
+  clear: both;
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: $body-font-desktop;
+  font-family: $font-family-base;
+}
+
+textarea {
+  resize: vertical;
+}
+
+legend {
+  white-space: normal;
+}
+
+button {
+  line-height: normal;
+}
+
+input:valid,
+textarea:valid {
+  background-color: #fff;
+}
+
+input:invalid,
+textarea:invalid {
+  background-color: #f0dddd;
+}
+
+::-webkit-input-placeholder {
+  color: $color-text;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  color: $color-text;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: $color-text;
+  opacity: 1;
+}
+
+// To add, with examples
+
+// Form structure
+
+.form-wrapper {
+  width: 210px;
+
+  @include breakpoint(sm) {
+    width: 360px;
+  }
+}
+
+//wrapper for a label, element and associated validation
+.form__group {
+  width: 210px;
+  margin-bottom: 1.5em;
+
+  @include breakpoint(sm) {
+    width: 360px;
+  }
+}
+
+//wrapper for multiple grouped inline groups - eg date/time/year fields
+.form__group-wrapper {
+  overflow: hidden;
+  margin-bottom: 1.5em;
+}
+
+.validation {
+  display: none;
+}
+
+.has-error .validation {
+  clear: both;
+  display: block;
+  color: $red;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+textarea,
+select {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 7px;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: $border;
+  border-radius: $border-radius;
+
+  &:disabled {
+    background-color: $color-link-disabled;
+  }
+}
+
+input[type='text'] {
+  padding: 8px 7px;
+}
+
+.select-day {
+  width: 65px;
+  float: left !important;
+  margin-right: 2px;
+
+  @include breakpoint(sm) {
+    width: 118px !important;
+  }
+}
+
+.select-month {
+  width: 65px;
+  float: left !important;
+  margin-right: 2px;
+
+  @include breakpoint(sm) {
+    width: 118px !important;
+  }
+}
+
+.select-year {
+  width: 74px;
+  float: left !important;
+  margin-right: 2px;
+
+  @include breakpoint(sm) {
+    width: 118px !important;
+  }
+}
+
+
+input[type='radio'],
+input[type='checkbox'] {
+  margin-right: 5px;
+}
+
+input[type='submit'],
+input[type='reset'] {
+  padding: 6px 20px;
+}
+
+.radio,
+.checkbox {
+  clear: both;
+  display: block;
+}
+
+// .checkbox-inline  (for horizontal groups of checkboxes)
+// .radio-inline     (for horizontal groups of radio buttons)
+
+.radio-inline,
+.checkbox-inline {
+  float: left;
+  margin-right: 30px;
+}
+
+// .form--horizontal  (for labels inline with form elements)
+
+.form--horizontal {
+  @include breakpoint(sm) {
+    width: 600px;
+  }
+
+
+  .form__group {
+    @include breakpoint(sm) {
+      width: 600px;
+      overflow: hidden;
+    }
+  }
+
+  label,
+  .form__label {
+    @include breakpoint(sm) {
+      width: 250px;
+      float: left;
+      margin-right: 10px;
+    }
+  }
+
+  .form__item {
+    @include breakpoint(sm) {
+      width: 340px;
+      float: left;
+    }
+  }
+}
+
+// .form--inline  (for groups of elements on a single line)
+
+.form--inline {
+  @include breakpoint(sm) {
+    width: 630px;
+  }
+
+
+  .form__group {
+    margin-bottom: 5px;
+
+    @include breakpoint(sm) {
+      width: 150px;
+      float: left;
+      margin: 0 5px 0 0;
+      overflow: hidden;
+    }
+  }
+
+  .form__item {
+    @include breakpoint(sm) {
+      width: 150px;
+    }
+  }
+
+  .btn {
+    float: left;
+  }
+}
+
+// Suggestion
+
+// Form error states:
+// .has-error
+// .has-success
+// .has-warning
+
+// Error state icons
+// .has-feedback
+
+// uppercase input text but not placeholder
+// useful for fields such as postcodes, car registration numbers etc
+input.uppercase::-moz-placeholder {
+  text-transform: none !important;
+}
+
+input.uppercase::-webkit-input-placeholder {
+  text-transform: none !important;
+}
+
+input.uppercase:-ms-input-placeholder {
+  text-transform: none !important;
+}
+
+// Example of CSS radio buttons
+// See: http://www.sitepoint.com/replacing-radio-buttons-without-replacing-radio-buttons/
+// There is a known issue with Samsung Android 4 (also early iOS) but this works tested on S3 and S4
+// However, please test thoroughly on all supported devices and raise and issues
+
+
+  .styled-radio-buttons {
+    /* One radio button per line */
+
+    label {
+      display: block;
+      line-height: 2.5;
+      font-size: 1.5em;
+    }
+
+    /* HTML5 Boilerplate accessible hidden styles */
+    [type='radio'] {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    [type='radio'] + span {
+      display: block;
+    }
+
+    /* the basic, unchecked style */
+    [type='radio'] + span::before {
+      content: '';
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.25em;
+      border-radius: 1em;
+      border: 0.125em solid #fff;
+      box-shadow: 0 0 0 0.15em #000;
+      margin-right: 0.75em;
+      transition: 0.5s ease all;
+    }
+
+    /* the checked style using the :checked pseudo class */
+    [type='radio']:checked + span::before {
+      background: green;
+      box-shadow: 0 0 0 0.25em #000;
+    }
+
+    /* never forget focus styling */
+    [type='radio']:focus + span::after {
+      content: '\0020\2190';
+      font-size: 1.5em;
+      line-height: 1;
+      vertical-align: -0.125em;
+    }
+  }
+
+
+  //Example of CSS Checkbox
+  .styled-checkbox {
+    /* One radio button per line */
+
+    label {
+      display: block;
+      line-height: 2.5;
+      font-size: 1.5em;
+    }
+
+    /* HTML5 Boilerplate accessible hidden styles */
+    [type='checkbox'] {
+      border: 0;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    [type='checkbox'] + span {
+      display: block;
+    }
+
+    /* the basic, unchecked style */
+    [type='checkbox'] + span::before {
+      content: '';
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.25em;
+      border: 0.125em solid #fff;
+      box-shadow: 0 0 0 0.15em #000;
+      margin-right: 0.75em;
+      transition: 0.5s ease all;
+    }
+
+    /* the checked style using the :checked pseudo class */
+    [type='checkbox']:checked + span::before {
+      background: green;
+      box-shadow: 0 0 0 0.25em #000;
+    }
+
+    /* never forget focus styling */
+    [type='checkbox']:focus + span::after {
+      content: '\0020\2190';
+      font-size: 1.5em;
+      line-height: 1;
+      vertical-align: -0.125em;
+    }
+  }
+
+
+
+//Default (styled) radio button (to be used as standard radio button styles without the class round it)
+//This will make it work straight from a CMS
+.default-radio {
+  /* One radio button per line */
+
+  label {
+    display: block;
+    line-height: 2.5;
+    font-size: 1.5em;
+  }
+
+  /* HTML5 Boilerplate accessible hidden styles */
+  [type='radio'] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  /* the basic, unchecked style */
+  [type='radio'] + label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.25em;
+    border-radius: 1em;
+    border: 0.125em solid #fff;
+    box-shadow: 0 0 0 0.15em #000;
+    margin-right: 0.75em;
+    transition: 0.5s ease all;
+  }
+
+  /* the checked style using the :checked pseudo class */
+  [type='radio']:checked + label::before {
+    background: green;
+    box-shadow: 0 0 0 0.25em #000;
+  }
+
+  /* never forget focus styling */
+  [type='radio']:focus + label::after {
+    content: '\0020\2190';
+    font-size: 1.5em;
+    line-height: 1;
+    vertical-align: -0.125em;
+  }
+}
+
+//Default (styled) checkbox (to be used as standard checkbox styles without the class round it)
+//This will make it work straight from a CMS
+.default-checkbox {
+  /* One checkbox button per line */
+
+  label {
+    display: block;
+    line-height: 2.5;
+    font-size: 1.5em;
+  }
+
+  /* HTML5 Boilerplate accessible hidden styles */
+  [type='checkbox'] {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  [type='checkbox'] + label {
+    display: block;
+  }
+
+  /* the basic, unchecked style */
+  [type='checkbox'] + label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.25em;
+    border: 0.125em solid #fff;
+    box-shadow: 0 0 0 0.15em #000;
+    margin-right: 0.75em;
+    transition: 0.5s ease all;
+  }
+
+  /* the checked style using the :checked pseudo class */
+  [type='checkbox']:checked + label::before {
+    background: green;
+    box-shadow: 0 0 0 0.25em #000;
+  }
+
+  /* never forget focus styling */
+  [type='checkbox']:focus + label::after {
+    content: '\0020\2190';
+    font-size: 1.5em;
+    line-height: 1;
+    vertical-align: -0.125em;
+  }
+}
