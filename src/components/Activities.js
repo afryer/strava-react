@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import axios from 'axios';
 import ActivityRow from './ActivityRow/ActivityRow';
 import ActivityFilter from './Filter/ActivityFilter';
@@ -18,26 +18,38 @@ class Activities extends Component {
       value: "null"
     };
 
-    this.toggleHeartRate = this.toggleHeartRate.bind(this);
-    this.toggleAscent = this.toggleAscent.bind(this);
-    this.toggleKudos = this.toggleKudos.bind(this);
-    this.toggleSuffering = this.toggleSuffering.bind(this);
-    this.toggleDistance = this.toggleDistance.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.toggleHeartRate = this
+      .toggleHeartRate
+      .bind(this);
+    this.toggleAscent = this
+      .toggleAscent
+      .bind(this);
+    this.toggleKudos = this
+      .toggleKudos
+      .bind(this);
+    this.toggleSuffering = this
+      .toggleSuffering
+      .bind(this);
+    this.toggleDistance = this
+      .toggleDistance
+      .bind(this);
+    this.handleChange = this
+      .handleChange
+      .bind(this);
   }
 
   componentDidMount() {
     axios
       .get("https://www.strava.com/api/v3/athletes/663067/activities", {
-        params: {
-          access_token: "76b4ec0f6143822d5f5d33a42fc554daa5f9f82d",
-          per_page: "200"
-        }
-      })
+      params: {
+        access_token: "76b4ec0f6143822d5f5d33a42fc554daa5f9f82d",
+        per_page: "200"
+      }
+    })
       .then(response => {
         const activities = response.data;
-        this.setState({ activities });
-        this.setState({ baseActivities: activities });
+        this.setState({activities});
+        this.setState({baseActivities: activities});
       });
   }
 
@@ -51,8 +63,10 @@ class Activities extends Component {
       }
     });
 
-    this.setState({ activities: byDistance });
-    this.setState({ toggleDistance: !this.state.toggleDistance });
+    this.setState({activities: byDistance});
+    this.setState({
+      toggleDistance: !this.state.toggleDistance
+    });
   }
 
   toggleAscent() {
@@ -65,8 +79,10 @@ class Activities extends Component {
       }
     });
 
-    this.setState({ activities: byAscent });
-    this.setState({ toggleAscent: !this.state.toggleAscent });
+    this.setState({activities: byAscent});
+    this.setState({
+      toggleAscent: !this.state.toggleAscent
+    });
   }
 
   toggleHeartRate() {
@@ -79,8 +95,10 @@ class Activities extends Component {
       }
     });
 
-    this.setState({ activities: byHR });
-    this.setState({ toggleHeartRate: !this.state.toggleHeartRate });
+    this.setState({activities: byHR});
+    this.setState({
+      toggleHeartRate: !this.state.toggleHeartRate
+    });
   }
 
   toggleSuffering() {
@@ -93,8 +111,10 @@ class Activities extends Component {
       }
     });
 
-    this.setState({ activities: bySuffering });
-    this.setState({ toggleSuffering: !this.state.toggleSuffering });
+    this.setState({activities: bySuffering});
+    this.setState({
+      toggleSuffering: !this.state.toggleSuffering
+    });
   }
 
   toggleKudos() {
@@ -107,77 +127,87 @@ class Activities extends Component {
       }
     });
 
-    this.setState({ activities: byKudos });
-    this.setState({ toggleKudos: !this.state.toggleKudos });
+    this.setState({activities: byKudos});
+    this.setState({
+      toggleKudos: !this.state.toggleKudos
+    });
   }
 
   handleChange(event) {
     const filteredActivities = this.state.baseActivities;
-    const filteredByActivities = filteredActivities.filter(
-      activity => activity.type === event.target.value
-    );
-    
-    this.setState({ value: event.target.value });
-    this.setState({ activities: filteredByActivities });
+    const filteredByActivities = filteredActivities.filter(activity => activity.type === event.target.value);
+
+    this.setState({value: event.target.value});
+    this.setState({activities: filteredByActivities});
   }
 
   render() {
     return <div>
-        <ActivityFilter change={this.handleChange} />
-        <table>
-          <tbody>
-            <tr>
-              <td>Name</td>
-              <td>
-                Kudos <button onClick={this.toggleKudos}>
-                  {this.state.toggleKudos ? "Hate me" : "Love me"}
-                </button>
-              </td>
-              <td>
-                Distance <button onClick={this.toggleDistance}>
-                  {this.state.toggleDistance ? "Short" : "Long"}
-                </button>
-              </td>
-              <td>
-                Suffer
-                <button onClick={this.toggleSuffering}>
-                  {this.state.toggleSuffering ? "Easy Life" : "Suffering"}
-                </button>
-              </td>
-              <td>
-                Max heart rate
-                <button onClick={this.toggleHeartRate}>
-                  {this.state.toggleHeartRate ? "Easy Life" : "Suffering"}
-                </button>
-              </td>
-              <td>Type</td>
-              <td>
-                total_elevation_gain
-                <button onClick={this.toggleAscent}>
-                  {this.state.toggleAscent ? "Easy Life" : "Suffering"}
-                </button>
-              </td>
-            </tr>
+      <ActivityFilter change={this.handleChange}/>
+      <table>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>
+              Kudos
+              <button onClick={this.toggleKudos}>
+                {this.state.toggleKudos
+                  ? "Hate me"
+                  : "Love me"}
+              </button>
+            </td>
+            <td>
+              Distance
+              <button onClick={this.toggleDistance}>
+                {this.state.toggleDistance
+                  ? "Short"
+                  : "Long"}
+              </button>
+            </td>
+            <td>
+              Suffer
+              <button onClick={this.toggleSuffering}>
+                {this.state.toggleSuffering
+                  ? "Easy Life"
+                  : "Suffering"}
+              </button>
+            </td>
+            <td>
+              Max heart rate
+              <button onClick={this.toggleHeartRate}>
+                {this.state.toggleHeartRate
+                  ? "Easy Life"
+                  : "Suffering"}
+              </button>
+            </td>
+            <td>Type</td>
+            <td>
+              total_elevation_gain
+              <button onClick={this.toggleAscent}>
+                {this.state.toggleAscent
+                  ? "Easy Life"
+                  : "Suffering"}
+              </button>
+            </td>
+          </tr>
 
-            {this.state.activities.map(activity => (
-              <ActivityRow
-                key={activity.id}
-                id={activity.id}
-                name={activity.name}
-                kudos_count={activity.kudos_count}
-                distance={activity.distance}
-                suffer_score={activity.suffer_score}
-                max_heartrate={activity.max_heartrate}
-                type={activity.type}
-                total_elevation_gain={activity.total_elevation_gain}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>;
+          {this
+            .state
+            .activities
+            .map(activity => (<ActivityRow
+              key={activity.id}
+              id={activity.id}
+              name={activity.name}
+              kudos_count={activity.kudos_count}
+              distance={activity.distance}
+              suffer_score={activity.suffer_score}
+              max_heartrate={activity.max_heartrate}
+              type={activity.type}
+              total_elevation_gain={activity.total_elevation_gain}/>))}
+        </tbody>
+      </table>
+    </div>;
   }
 }
-
-
 
 export default Activities

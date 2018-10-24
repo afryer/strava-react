@@ -29,7 +29,7 @@ class Athlete extends Component {
     ]).then(axios.spread((athleteData, statsData) => {
       const athlete = athleteData.data;
       const clubs = athleteData.data.clubs;
-      const stats = statsData.data.recent_run_totals;
+      const stats = statsData.data;
       this.setState({stats: stats, athlete: athlete, clubs: clubs});
     }));
   }
