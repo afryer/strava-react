@@ -4,14 +4,18 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
     "moment": "^2.20.1",
+    "node-sass": "4.7.2",
     "node-sass-chokidar": "^1.1.0",
     "npm-run-all": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^2.0.5"
+    "react-scripts": "^2.0.5",
+    "react-test-renderer": "^16.6.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -22,5 +26,11 @@
     "build": "npm-run-all build-css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
